@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Jfusion_Joomla>
+			<version>1.0.3</version>
+		</Jfusion_Joomla>
+	</modules>
+
+	<default>
+		<joomla>
+			<joomlaconfig>
+				<cache>0</cache>
+			</joomlaconfig>
+		</joomla>
+	</default>
+
+	<global>
+		<blocks>
+			<joomla>
+				<class>Jfusion_Joomla_Block</class>
+			</joomla>
+		</blocks>
+		<helpers>
+			<joomla>
+				<class>Jfusion_Joomla_Helper</class>
+			</joomla>
+		</helpers>
+		<models>
+			<joomla>
+				<class>Jfusion_Joomla_Model</class>
+			</joomla>
+		</models>
+		<cache>
+			<types>
+                <joomla_html translate="label,description" module="core">
+                    <label>Joomla Modules</label>
+                    <description>Joomla HTML Modules</description>
+                    <tags>JOOMLA_HTML</tags>
+                </joomla_html>
+			</types>
+		</cache>
+	</global>
+	
+	<frontend>
+		<layout>
+			<updates>
+				<joomla>
+					<file>joomla.xml</file>
+				</joomla>
+			</updates>
+		</layout>
+		<events>
+			<controller_action_predispatch>
+				<observers>
+					<joomla_language>
+						<type>singleton</type>
+						<class>joomla/observer</class>
+						<method>syncUserLanguage</method>
+					</joomla_language>
+				</observers>
+			</controller_action_predispatch>
+		</events>
+	</frontend>
+
+	<admin>
+		<routers>
+			<Jfusion_Joomla>
+				<use>admin</use>
+				<args>
+					<module>Jfusion_Joomla</module>
+					<frontName>joomla</frontName>
+				</args>
+			</Jfusion_Joomla>
+		</routers>
+	</admin>
+</config>
